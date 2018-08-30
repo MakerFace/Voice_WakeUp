@@ -1,6 +1,7 @@
 package com.wakeup.voice.voice_wakeup;
 
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
+import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
@@ -233,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
     public void jiexi(float[] input) {
         //if (mytsf == null)
         //return;
+        //VAD模块
         double[] new_input = new double[input.length];
         for (int i = 0; i < input.length; i++)
             new_input[i] = (double) input[i];
@@ -262,17 +265,6 @@ public class MainActivity extends AppCompatActivity {
             }
             result[i] = (float) pow(result[i], 0.25);
         }
-        List<PointValue> values = new ArrayList<>();
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < result.length; i++) {
-            values.add(new PointValue(i, result[i]));
-        }
-        Line line = new Line(values);
-        line.setHasPoints(false);
-        line.setCubic(true);
-        lines.add(line);
-        LineChartData data = new LineChartData(lines);
-        lineChartView.setLineChartData(data);
         float m_max = result[0];
         for (float aResult : result)
             if (m_max < aResult)

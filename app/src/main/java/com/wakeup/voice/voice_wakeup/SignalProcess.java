@@ -296,17 +296,5 @@ public class SignalProcess {
         }
         count = count - silence / 2;
         WavEnd = WavStart + count - 1;
-
-//		try{
-//        	FileWriter fileWriter=new FileWriter("d:\\javaresult.txt");
-//
-//
-//         fileWriter.write(String.valueOf(count)+" ");
-//         fileWriter.write(String.valueOf(silence)+" ");
-//        fileWriter.flush();
-//        fileWriter.close();
-//        }catch(Exception e){
-//
-//        }
     }
 }
